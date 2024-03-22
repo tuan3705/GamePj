@@ -17,23 +17,39 @@ void waitUntilKeyPressed()
 }
 int main(int argc, char* argv[])
 {
+
      Graphics graphics;
      graphics.init();
 
      SDL_Texture* background = graphics.loadTexture("Picture/background.png");
      graphics.prepareScene(background);
-    // graphics.presentScene();
      SDL_Texture* shiba = graphics.loadTexture("Picture/shiba.png");
      graphics.renderTexture(shiba, 150, 200);
+     SDL_Texture* land = graphics.loadTexture("Picture/land.png");
+     graphics.renderTexture(land, 0, 600);
 	 graphics.presentScene();
-    // waitUntilKeyPressed();
-     waitUntilKeyPressed();
-
-
-
+//	 int x,y;
+//	 SDL_Event event;
+//	 while (true) {
+//        SDL_GetMouseState(&x, &y);
+//       cerr << x << ", " << y << endl;
+//        SDL_PollEvent(&event);
+//        switch (event.type) {
+//            case SDL_QUIT:
+//                 exit(0);
+//                 break;
+//            case SDL_MOUSEBUTTONDOWN:
+//                 cerr << "Down at (" << x << ", " << y << ")\n";
+//                 break;
+//            case SDL_MOUSEBUTTONUP:
+//                 cerr << "Up at (" << x << ", " << y << ")\n";
+//                 break;
+//        }
+//        SDL_Delay(100);
+//    }
 
      waitUntilKeyPressed();
      graphics.quit();
- //    quitSDL(window, renderer);
+
 
 }

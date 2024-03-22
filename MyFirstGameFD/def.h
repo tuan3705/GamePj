@@ -1,8 +1,7 @@
 #ifndef _DEF__H
 #define _DEF__H
-
-const int SCREEN_WIDTH = 350;
-const int SCREEN_HEIGHT = 485;
-const char* WINDOW_TITLE = "Flappy Doge";
+#define WINDOW_TITLE "Flappy Doge"
+const int SCREEN_WIDTH = 500;
+const int SCREEN_HEIGHT = 700;
 #endif
 
