@@ -1,4 +1,15 @@
 # depslib dependency file v1.0
-1584205420 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\main.cpp
-	<iostream>
+1711135955 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\main.cpp
+	<bits/stdc++.h>
+	"def.h"
+	"graphics.h"
+
+1711127913 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\game.cpp
+
+1711135878 c:\users\admin\documents\github\gamepj\myfirstgamefd\def.h
+
+1711136011 c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	"def.h"
 
