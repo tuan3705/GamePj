@@ -1,5 +1,3 @@
-#include <SDL.h>
-#include <SDL_image.h>
 #include "graphics.h"
 void Graphics::logErrorAndExit(const char* msg, const char* error)
 {
@@ -29,6 +27,10 @@ void Graphics::prepareScene(SDL_Texture* background)
     SDL_RenderClear(renderer);
     SDL_RenderCopy( renderer, background, NULL, NULL);
 }
+void Graphics::prepareScene()
+{
+    SDL_RenderClear(renderer);
+}
 void Graphics::presentScene()
 {
     SDL_RenderPresent(renderer);
@@ -41,14 +43,32 @@ SDL_Texture* Graphics::loadTexture(const char *filename)
                 SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION,SDL_LOG_PRIORITY_ERROR, "Load texture %s", IMG_GetError());
                return texture;
 }
-void Graphics::renderTexture(SDL_Texture *texture, int x, int y)
+void Graphics::renderTexture(SDL_Texture *texture, int x, int y,double ruleW,double ruleH)
 {
     SDL_Rect dest;
     dest.x = x;
     dest.y = y;
+
     SDL_QueryTexture(texture, NULL, NULL, &dest.w, &dest.h);
+    if(ruleH)dest.w=ruleW;
+    if(ruleW)dest.h=ruleH;
     SDL_RenderCopy(renderer, texture, NULL, &dest);
 }
+void Graphics::blitRect(SDL_Texture *texture, SDL_Rect *src, int x, int y)
+    {
+        SDL_Rect dest;
+
+        dest.x = x;
+        dest.y = y;
+        dest.w = src->w;
+        dest.h = src->h;
+
+        SDL_RenderCopy(renderer, texture, src, &dest);
+    }
+void Graphics::renderScrolling(const ScrollingBackground& bgr) {
+        renderTexture(bgr.texture, bgr.scrollingOffset, 500,0,0);
+        renderTexture(bgr.texture, bgr.scrollingOffset - bgr.width, 500,0,0);
+    }
 
 void Graphics::quit()
 {

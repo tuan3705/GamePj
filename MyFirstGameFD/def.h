@@ -1,7 +1,21 @@
-#ifndef _DEF__H
+#pragma once
 #define _DEF__H
-#define WINDOW_TITLE "Flappy Doge"
-const int SCREEN_WIDTH = 500;
-const int SCREEN_HEIGHT = 700;
-#endif
+#include <SDL.h>
+#include <SDL_image.h>
+#define WINDOW_TITLE "Flappy Bird"
+const int PIPE_SPACE = 160;
+const int TOTAL_PIPE = 4;
+const int PIPE_DISTANCE = 220;
+const int LAND_HEIGHT = 140;
+const int BIRD_WIDTH = 34;
+const int BIRD_HEIGHT = 24;
+const int SCREEN_WIDTH = 350;
+const int SCREEN_HEIGHT = 625;
+const int MESSAGE_WIDTH = 184;
+const int MESSAGE_HEIGHT = 267;
+const int TTgameOver_WIDTH = 250;
+const int TTgameOver_HEIGHT = 204;
+const int SCREEN_FPS = 60;
+const int SCREEN_TICKS_PER_FRAME = 1000/SCREEN_FPS;
+
 

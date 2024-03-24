@@ -1,20 +1,35 @@
 # depslib dependency file v1.0
-1711146411 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\main.cpp
+1711270712 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\main.cpp
 	<bits/stdc++.h>
-	"def.h"
-	"graphics.h"
+	"gameloop.h"
 
 1711127913 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\game.cpp
 
-1711145817 c:\users\admin\documents\github\gamepj\myfirstgamefd\def.h
-
-1711143551 c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.h
+1711269376 c:\users\admin\documents\github\gamepj\myfirstgamefd\def.h
 	<SDL.h>
 	<SDL_image.h>
-	"def.h"
 
-1711143472 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.cpp
+1711270586 c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.h
+	"def.h"
+	<bits/stdc++.h>
+
+1711270840 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.cpp
+	"graphics.h"
+
+1711256872 c:\users\admin\documents\github\gamepj\myfirstgamefd\doge.h
+	<bits/stdc++.h>
+	<cstring>
 	<SDL.h>
 	<SDL_image.h>
 	"graphics.h"
+
+1711270972 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\gameloop.cpp
+	"gameloop.h"
+
+1711271095 c:\users\admin\documents\github\gamepj\myfirstgamefd\bird.h
+	"graphics.h"
+	<bits/stdc++.h>
+
+1711265885 c:\users\admin\documents\github\gamepj\myfirstgamefd\gameloop.h
+	"bird.h"
 
