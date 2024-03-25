@@ -53,12 +53,13 @@ void playGame()
        //  SDL_Texture* land = graphics.loadTexture("Picture/land.png");
        //  graphics.renderTexture(land, 0, 500,0,0);
         const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
-        if (currentKeyStates[SDL_SCANCODE_SPACE]) bird.turnUp();
+        SDL_Event event;
+        if (currentKeyStates[SDL_SCANCODE_SPACE] ) bird.turnUp();
         else bird.turnDown();
         bird.move();
         bird.render(bird,graphics);
         graphics.presentScene();
-        SDL_Delay(1);
+        SDL_Delay(10);
         }
         graphics.quit();
 

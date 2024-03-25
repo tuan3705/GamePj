@@ -23,13 +23,15 @@
 	<SDL_image.h>
 	"graphics.h"
 
-1711270972 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\gameloop.cpp
+1711272091 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\gameloop.cpp
 	"gameloop.h"
 
-1711271095 c:\users\admin\documents\github\gamepj\myfirstgamefd\bird.h
+1711330446 c:\users\admin\documents\github\gamepj\myfirstgamefd\bird.h
 	"graphics.h"
 	<bits/stdc++.h>
 
 1711265885 c:\users\admin\documents\github\gamepj\myfirstgamefd\gameloop.h
 	"bird.h"
+
+1711195719 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\bird.cpp
 
