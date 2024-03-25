@@ -12,7 +12,7 @@ public:
     int x;
     int y;
     int dy;
-    int dd=5;
+    int dd=3;
     int du=1;
     int index=0;
     double a=0;
@@ -20,7 +20,7 @@ public:
         index+=1;
     }
     int GetIndex(){
-        return index%60;
+        return index%48;
     }
     void move(){
         y+=dy;
@@ -42,10 +42,10 @@ public:
      case 1:
          birdFlap = graphics.loadTexture(TTBirdUp);
          break;
-     case 21:
+     case 17:
          birdFlap = graphics.loadTexture(TTBirdMid);
          break;
-     case 41:
+     case 33:
          birdFlap = graphics.loadTexture(TTBirdDown);
          break;
         }

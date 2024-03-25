@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1711270712 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\main.cpp
+1711351498 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\main.cpp
 	<bits/stdc++.h>
 	"gameloop.h"
 
@@ -9,11 +9,11 @@
 	<SDL.h>
 	<SDL_image.h>
 
-1711270586 c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.h
+1711344053 c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.h
 	"def.h"
 	<bits/stdc++.h>
 
-1711270840 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.cpp
+1711343441 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.cpp
 	"graphics.h"
 
 1711256872 c:\users\admin\documents\github\gamepj\myfirstgamefd\doge.h
@@ -23,10 +23,10 @@
 	<SDL_image.h>
 	"graphics.h"
 
-1711272091 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\gameloop.cpp
+1711351606 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\gameloop.cpp
 	"gameloop.h"
 
-1711330446 c:\users\admin\documents\github\gamepj\myfirstgamefd\bird.h
+1711342268 c:\users\admin\documents\github\gamepj\myfirstgamefd\bird.h
 	"graphics.h"
 	<bits/stdc++.h>
 
