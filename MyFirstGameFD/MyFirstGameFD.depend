@@ -9,11 +9,11 @@
 	<SDL.h>
 	<SDL_image.h>
 
-1711344053 c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.h
+1711448611 c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.h
 	"def.h"
 	<bits/stdc++.h>
 
-1711343441 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.cpp
+1711448784 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.cpp
 	"graphics.h"
 
 1711256872 c:\users\admin\documents\github\gamepj\myfirstgamefd\doge.h
@@ -23,10 +23,10 @@
 	<SDL_image.h>
 	"graphics.h"
 
-1711351606 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\gameloop.cpp
+1711550838 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\gameloop.cpp
 	"gameloop.h"
 
-1711342268 c:\users\admin\documents\github\gamepj\myfirstgamefd\bird.h
+1711448289 c:\users\admin\documents\github\gamepj\myfirstgamefd\bird.h
 	"graphics.h"
 	<bits/stdc++.h>
 

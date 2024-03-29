@@ -14,13 +14,13 @@ public:
     int dy;
     int dd=3;
     int du=1;
-    int index=0;
+    int indexAnimation=0;
     double a=0;
-    void UpdateIndex(){
-        index+=1;
+    void UpdateIndexAnimation(){
+        indexAnimation+=1;
     }
-    int GetIndex(){
-        return index%48;
+    int GetIndexAnimation(){
+        return indexAnimation%48;
     }
     void move(){
         y+=dy;
@@ -37,8 +37,8 @@ public:
     }
     void render(const Bird& bird,  Graphics& graphics)
     {
-        UpdateIndex();
-        switch (GetIndex()){
+        UpdateIndexAnimation();
+        switch (GetIndexAnimation()){
      case 1:
          birdFlap = graphics.loadTexture(TTBirdUp);
          break;

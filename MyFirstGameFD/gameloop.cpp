@@ -15,7 +15,7 @@ void renderBase(Graphics& graphics1)
 {
      graphics1.init();
 
-     SDL_Texture* background1 = graphics1.loadTexture("Picture/background.png");
+     SDL_Texture* background1 = graphics1.loadTexture("Picture/background-day.png");
      graphics1.prepareScene(background1);
 
      SDL_Texture* land1 = graphics1.loadTexture("Picture/land.png");
@@ -27,7 +27,7 @@ void renderBase(Graphics& graphics1)
      SDL_Texture* birdf = graphics1.loadTexture("Picture/redbird-midflap.png");
      graphics1.renderTexture(birdf, SCREEN_WIDTH/4, SCREEN_HEIGHT/2, 0, 0);
 	 graphics1.presentScene();
-	 waitUntilKeyPressed();
+	  waitUntilKeyPressed();
 }
 void playGame()
 {
@@ -39,8 +39,9 @@ void playGame()
     	 bool quit=false;
 	     SDL_Event event;
 	     ScrollingBackground base;
+	     ScrollingBackground bgrr;
+	     bgrr.setTexture(graphics.loadTexture("Picture/background-day.png"));
 	     base.setTexture(graphics.loadTexture("Picture/land.png"));
-	     SDL_Texture* background = graphics.loadTexture("Picture/background.png");
 	     SDL_Texture* TTgameOver = graphics.loadTexture("Picture/TTgameOver.png");
 	  while(!quit)
         {
@@ -48,20 +49,18 @@ void playGame()
             graphics.renderTexture(TTgameOver,(SCREEN_WIDTH-TTgameOver_WIDTH)/2,(500-TTgameOver_HEIGHT)/2,0,0);
             graphics.presentScene();
             waitUntilKeyPressed();
-           // void playGame();
             };
             graphics.prepareScene();
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT) quit = true;
-        }
-         graphics.prepareScene(background);
+            if(SDL_PollEvent(&event)){
+              if (event.type == SDL_QUIT) quit = true;
+              const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
+              if (currentKeyStates[SDL_SCANCODE_SPACE] || event.type == SDL_MOUSEBUTTONDOWN) bird.turnUp();
+              else bird.turnDown();
+            }
+         bgrr.scroll(2);
+         graphics.renderScrolling(bgrr,0);
          base.scroll(2);
          graphics.renderScrolling(base,500);
-       //  SDL_Texture* land = graphics.loadTexture("Picture/land.png");
-       //  graphics.renderTexture(land, 0, 500,0,0);
-        const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
-        if (currentKeyStates[SDL_SCANCODE_SPACE] || event.type == SDL_MOUSEBUTTONDOWN) bird.turnUp();
-        else bird.turnDown();
 //       if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_UP ) bird.turnUp();
 //       else bird.turnDown();
         bird.move();

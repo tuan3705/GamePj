@@ -68,6 +68,7 @@ void Graphics::blitRect(SDL_Texture *texture, SDL_Rect *src, int x, int y)
 void Graphics::renderScrolling(const ScrollingBackground& bgr,int h) {
         renderTexture(bgr.texture, bgr.scrollingOffset, h,0,0);
         renderTexture(bgr.texture, bgr.scrollingOffset - bgr.width, h,0,0);
+        renderTexture(bgr.texture, bgr.scrollingOffset - 2*bgr.width, h,0,0);
     }
 
 void Graphics::quit()
