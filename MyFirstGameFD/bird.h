@@ -4,18 +4,29 @@
 #include<bits/stdc++.h>
 using namespace std;
 class Bird{
-public:
+private:
     SDL_Texture* birdFlap;
     char *TTBirdUp = "Picture/redbird-upflap.png";
     char *TTBirdMid = "Picture/redbird-midflap.png";
     char *TTBirdDown = "Picture/redbird-downflap.png";
-    int x;
-    int y;
+    int x = SCREEN_WIDTH/4;
+    int y = SCREEN_HEIGHT/2;
+    bool isFlap;
+    int angle=0;
     int dy;
-    int dd=3;
-    int du=1;
+    double dd=0.6;
+    int du=15;
     int indexAnimation=0;
-    double a=0;
+public:
+    void Flap(){
+        isFlap = true;
+    }
+    void notFlap(){
+        isFlap = false;
+    }
+    bool GetFlap(){
+        return isFlap;
+    }
     void UpdateIndexAnimation(){
         indexAnimation+=1;
     }
@@ -24,16 +35,20 @@ public:
     }
     void move(){
         y+=dy;
+        if(y<=0) y=0;
+        if(y>=500-BIRD_HEIGHT) y=500-BIRD_HEIGHT;
     }
     void turnUp()
     {
-        dy=-dd;
-        a=0;
+        dy=-du;
+        dd=5;
+        angle=-45;
     }
     void turnDown()
     {
-        dy=du+a;
-        a+=0.1;
+        dy=dd;
+        angle+=5;
+        if(angle>45) angle=45;
     }
     void render(const Bird& bird,  Graphics& graphics)
     {
@@ -49,11 +64,21 @@ public:
          birdFlap = graphics.loadTexture(TTBirdDown);
          break;
         }
-
-        graphics.renderTexture(birdFlap,bird.x,bird.y,0,0);
+        graphics.renderTextureEx(birdFlap,bird.x,bird.y,angle);
     }
-    bool gameOver() {
-    return   y < 0 || y >= 500-BIRD_HEIGHT;
+    void update()
+    {
+        if(!isFlap) {
+        dy=(int)dd;
+        dd += 0.6;
+        if(dd > 12) dd = 12;
+        angle+=5;
+        if(angle>45) angle=45;
+        }
+    }
+bool gameOver() {
+    return false;
+    return   y >= 500-BIRD_HEIGHT;
     }
 
 };

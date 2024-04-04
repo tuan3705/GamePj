@@ -28,7 +28,7 @@ void prepareScene(SDL_Texture* background);
 void prepareScene();
 void presentScene();
 SDL_Texture* loadTexture(const char *filename);
-void renderTexture(SDL_Texture *texture, int x, int y,double ruleW,double ruleH);
+void renderTextureEx(SDL_Texture *texture, int x, int y,int angle);
 void blitRect(SDL_Texture *texture, SDL_Rect *src, int x, int y);
 void renderScrolling(const ScrollingBackground& bgr, int h);
 void quit();
