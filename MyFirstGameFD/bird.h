@@ -11,11 +11,12 @@ private:
     char *TTBirdDown = "Picture/redbird-downflap.png";
     int x = SCREEN_WIDTH/4;
     int y = SCREEN_HEIGHT/2;
+    int Gravity = 1;
     bool isFlap;
     int angle=0;
     int dy;
-    double dd=0.6;
-    int du=15;
+    double dd=3;
+    int du=8;
     int indexAnimation=0;
 public:
     void Flap(){
@@ -37,18 +38,21 @@ public:
         y+=dy;
         if(y<=0) y=0;
         if(y>=500-BIRD_HEIGHT) y=500-BIRD_HEIGHT;
+        if(dy > 0) angle += 5;
+        if(angle > 45) angle = 45;
+        if(dy > 0) { dy += 0.1*Gravity; Gravity++; }
+        if(dy > 12) dy = 12;
     }
     void turnUp()
     {
-        dy=-du;
-        dd=5;
-        angle=-45;
+        dy = -du;
+        dd = 3;
+        angle = -45;
+        Gravity = 1;
     }
     void turnDown()
     {
-        dy=dd;
-        angle+=5;
-        if(angle>45) angle=45;
+        dy = (int)dd;
     }
     void render(const Bird& bird,  Graphics& graphics)
     {
@@ -69,11 +73,10 @@ public:
     void update()
     {
         if(!isFlap) {
-        dy=(int)dd;
-        dd += 0.6;
-        if(dd > 12) dd = 12;
-        angle+=5;
-        if(angle>45) angle=45;
+            turnDown();
+        }
+        else {
+            turnUp();
         }
     }
 bool gameOver() {

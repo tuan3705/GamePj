@@ -53,17 +53,6 @@ void Graphics::renderTextureEx(SDL_Texture *texture, int x,int y,int angle)
     SDL_RenderCopyEx(renderer, texture, NULL, &dest, angle, NULL, SDL_FLIP_NONE);
 
 }
-void Graphics::blitRect(SDL_Texture *texture, SDL_Rect *src, int x, int y)
-    {
-        SDL_Rect dest;
-
-        dest.x = x;
-        dest.y = y;
-        dest.w = src->w;
-        dest.h = src->h;
-
-        SDL_RenderCopy(renderer, texture, src, &dest);
-    }
 void Graphics::renderScrolling(const ScrollingBackground& bgr,int h) {
         renderTextureEx(bgr.texture, bgr.scrollingOffset, h,0);
         renderTextureEx(bgr.texture, bgr.scrollingOffset - bgr.width, h,0);

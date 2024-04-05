@@ -7,7 +7,7 @@ void waitUntilKeyPressed()
     SDL_Event e;
     while (true) {
         if ( SDL_PollEvent(&e) != 0 &&
-             (e.type == SDL_KEYDOWN || e.type == SDL_QUIT) )
+             (e.type == SDL_KEYDOWN || e.type == SDL_QUIT || e.type == SDL_MOUSEBUTTONDOWN) )
             return;
         SDL_Delay(100);
     }
@@ -33,7 +33,7 @@ void renderBase(Graphics& graphics1)
      ScrollingBackground bgrr;
      bgrr.setTexture(graphics1.loadTexture("Picture/background-day.png"));
      base.setTexture(graphics1.loadTexture("Picture/land.png"));
-     SDL_Texture* TTgameOver = graphics1.loadTexture("Picture/TTgameOver.png");
+    // SDL_Texture* TTgameOver = graphics1.loadTexture("Picture/TTgameOver.png");
 	  waitUntilKeyPressed();
 }
 void playGame()
@@ -53,17 +53,16 @@ void playGame()
             bird.notFlap();
             graphics.prepareScene();
             frameStart = SDL_GetTicks();
-            if(SDL_PollEvent(&event)){
+            while(SDL_PollEvent(&event)!=0){
               if (event.type == SDL_QUIT) quit = true;
               const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
-              if (currentKeyStates[SDL_SCANCODE_SPACE] || event.type == SDL_MOUSEBUTTONDOWN) {bird.Flap();}
+              if (currentKeyStates[SDL_SCANCODE_SPACE] || event.type == SDL_MOUSEBUTTONDOWN) { bird.turnUp();}
+              else { bird.turnDown();}
             }
-         bird.update();
          bird.move();
-         bird.notFlap();
-         bgrr.scroll(1);
+         bgrr.scroll(2);
          graphics.renderScrolling(bgrr,0);
-         base.scroll(1);
+         base.scroll(2);
          graphics.renderScrolling(base,500);
         bird.render(bird,graphics);
         graphics.presentScene();;
