@@ -9,7 +9,7 @@ private:
     char *TTBirdUp = "Picture/redbird-upflap.png";
     char *TTBirdMid = "Picture/redbird-midflap.png";
     char *TTBirdDown = "Picture/redbird-downflap.png";
-    int x = SCREEN_WIDTH/4;
+    int x = SCREEN_WIDTH/7;
     int y = SCREEN_HEIGHT/2;
     int Gravity = 1;
     bool isFlap;
@@ -34,6 +34,8 @@ public:
     int GetIndexAnimation(){
         return indexAnimation%48;
     }
+    int getX() {return x;}
+    int getY() {return y;}
     void move(){
         y+=dy;
         if(y<=0) y=0;

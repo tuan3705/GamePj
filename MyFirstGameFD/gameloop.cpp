@@ -1,7 +1,16 @@
 #include "gameloop.h"
+#include<bits/stdc++.h>
 using namespace std;
 const int TARGET_FPS = 60;
 Uint32 frameStart, frameTime;
+bool checkCollide(Bird bird , PIPE pipe)
+{
+    if (( bird.getX() <= pipe.getX() + 52 && bird.getX() + 34 >= pipe.getX() && bird.getY() <= pipe.getY_Un() + 320 && bird.getY() + 24 >= pipe.getY_Un()))
+      return true;
+    if ( bird.getX() <= pipe.getX() + 52 && bird.getX() + 34 >= pipe.getX() && bird.getY() <= pipe.getY_Up() + 320 && bird.getY() + 24 >= pipe.getY_Up())
+       return true;
+    return false;
+}
 void waitUntilKeyPressed()
 {
     SDL_Event e;
@@ -27,7 +36,7 @@ void renderBase(Graphics& graphics1)
      graphics1.renderTextureEx(message1, (SCREEN_WIDTH-MESSAGE_WIDTH)/2,(SCREEN_HEIGHT-MESSAGE_HEIGHT-LAND_HEIGHT)/2,0);
 
      SDL_Texture* birdf = graphics1.loadTexture("Picture/redbird-midflap.png");
-     graphics1.renderTextureEx(birdf, SCREEN_WIDTH/4, SCREEN_HEIGHT/2, 0);
+     graphics1.renderTextureEx(birdf, SCREEN_WIDTH/7, SCREEN_HEIGHT/2, 0);
 	 graphics1.presentScene();
      ScrollingBackground base;
      ScrollingBackground bgrr;
@@ -41,6 +50,15 @@ void playGame()
          Graphics graphics;
          renderBase(graphics);
          Bird bird;
+         vector < PIPE > pipe;
+         for(int i = 0; i <= 3; i++)
+         {
+             PIPE pipe1;
+             pipe1.loadTexturePipe(graphics);
+             pipe1.setPosX(700 + 220*i);
+             pipe1.setPosY(rand()%141);
+             pipe.push_back(pipe1);
+         }
     	 bool quit=false;
 	     SDL_Event event;
 	     ScrollingBackground base;
@@ -50,22 +68,44 @@ void playGame()
 	     SDL_Texture* TTgameOver = graphics.loadTexture("Picture/TTgameOver.png");
 	  while(!quit)
         {
-            bird.notFlap();
+            if(checkCollide(bird,pipe[0]))
+            {
+                graphics.renderTextureEx(TTgameOver, (350-TTgameOver_WIDTH)/2, (500-TTgameOver_HEIGHT)/2, 0);
+                graphics.presentScene();
+                SDL_Delay(2000);
+                playGame();
+            }
             graphics.prepareScene();
             frameStart = SDL_GetTicks();
             while(SDL_PollEvent(&event)!=0){
               if (event.type == SDL_QUIT) quit = true;
               const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
               if (currentKeyStates[SDL_SCANCODE_SPACE] || event.type == SDL_MOUSEBUTTONDOWN) { bird.turnUp();}
-              else { bird.turnDown();}
+               else { bird.turnDown();}
             }
          bird.move();
          bgrr.scroll(2);
          graphics.renderScrolling(bgrr,0);
+         for(int i = 0;i < pipe.size(); i++)
+         {
+             pipe[i].scroll(2);
+             pipe[i].renderPipe( pipe[i].getX(), pipe[i].getY_Up(), graphics, 1);
+             pipe[i].renderPipe( pipe[i].getX(), pipe[i].getY_Un(), graphics, 2);
+         }
+         if(pipe[0].checkPipeOut())
+         {
+             pipe.erase(pipe.begin()+0);
+             PIPE pipe1;
+             pipe1.loadTexturePipe(graphics);
+             pipe1.setPosX(pipe[2].getX()+220);
+             pipe1.setPosY(rand()%141);
+             pipe.push_back(pipe1);
+
+         }
          base.scroll(2);
          graphics.renderScrolling(base,500);
         bird.render(bird,graphics);
-        graphics.presentScene();;
+        graphics.presentScene();
         frameTime = SDL_GetTicks() - frameStart;
         if(frameTime < 1000 / TARGET_FPS){
             SDL_Delay((1000 / TARGET_FPS) - frameTime);
