@@ -5,7 +5,7 @@
 #include "pipe.h"
 void waitUntilKeyPressed();
 void renderBase();
-void playGame();
+void playGame(Graphics& graphics);
 bool checkCollide(Bird bird, PIPE pipe);
 
 

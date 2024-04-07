@@ -5,12 +5,15 @@
 using namespace std;
 class Bird{
 private:
-    SDL_Texture* birdFlap;
-    char *TTBirdUp = "Picture/redbird-upflap.png";
-    char *TTBirdMid = "Picture/redbird-midflap.png";
-    char *TTBirdDown = "Picture/redbird-downflap.png";
+    SDL_Texture* birdFlapUp;
+    SDL_Texture* birdFlapMid;
+    SDL_Texture* birdFlapDown;
+    vector< string > TTBirdUp = { "Picture/yellowbird-upflap.png", "Picture/redbird-upflap.png", "Picture/bluebird-upflap.png"};
+    vector< string > TTBirdMid ={ "Picture/yellowbird-midflap.png", "Picture/redbird-midflap.png", "Picture/bluebird-midflap.png"};
+    vector< string > TTBirdDown ={ "Picture/yellowbird-downflap.png", "Picture/redbird-downflap.png", "Picture/bluebird-downflap.png"};
     int x = SCREEN_WIDTH/7;
     int y = SCREEN_HEIGHT/2;
+    int randomBird = rand()%3;
     int Gravity = 1;
     bool isFlap;
     int angle=0;
@@ -19,14 +22,15 @@ private:
     int du=8;
     int indexAnimation=0;
 public:
-    void Flap(){
-        isFlap = true;
+    int numberBird()
+    {
+        return randomBird;
     }
-    void notFlap(){
-        isFlap = false;
-    }
-    bool GetFlap(){
-        return isFlap;
+    void loadBird(Graphics& graphics)
+    {
+        birdFlapUp = graphics.loadTexture(TTBirdUp[randomBird].c_str());
+        birdFlapMid = graphics.loadTexture(TTBirdMid[randomBird].c_str());
+        birdFlapDown = graphics.loadTexture(TTBirdDown[randomBird].c_str());
     }
     void UpdateIndexAnimation(){
         indexAnimation+=1;
@@ -59,28 +63,13 @@ public:
     void render(const Bird& bird,  Graphics& graphics)
     {
         UpdateIndexAnimation();
-        switch (GetIndexAnimation()){
-     case 1:
-         birdFlap = graphics.loadTexture(TTBirdUp);
-         break;
-     case 17:
-         birdFlap = graphics.loadTexture(TTBirdMid);
-         break;
-     case 33:
-         birdFlap = graphics.loadTexture(TTBirdDown);
-         break;
-        }
-        graphics.renderTextureEx(birdFlap,bird.x,bird.y,angle);
+     if(GetIndexAnimation()<17)
+         graphics.renderTextureEx(birdFlapUp,bird.x,bird.y,angle);
+     else if(GetIndexAnimation()<33)
+         graphics.renderTextureEx(birdFlapMid,bird.x,bird.y,angle);
+     else  graphics.renderTextureEx(birdFlapDown,bird.x,bird.y,angle);
     }
-    void update()
-    {
-        if(!isFlap) {
-            turnDown();
-        }
-        else {
-            turnUp();
-        }
-    }
+
 bool gameOver() {
     return false;
     return   y >= 500-BIRD_HEIGHT;

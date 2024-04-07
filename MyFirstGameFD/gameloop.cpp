@@ -22,9 +22,9 @@ void waitUntilKeyPressed()
     }
 
 }
-void renderBase(Graphics& graphics1)
+void renderBase(Graphics& graphics1,Bird bird)
 {
-     graphics1.init();
+     //graphics1.init();
 
      SDL_Texture* background1 = graphics1.loadTexture("Picture/background-day.png");
      graphics1.prepareScene(background1);
@@ -35,7 +35,10 @@ void renderBase(Graphics& graphics1)
      SDL_Texture* message1 = graphics1.loadTexture("Picture/message.png");
      graphics1.renderTextureEx(message1, (SCREEN_WIDTH-MESSAGE_WIDTH)/2,(SCREEN_HEIGHT-MESSAGE_HEIGHT-LAND_HEIGHT)/2,0);
 
-     SDL_Texture* birdf = graphics1.loadTexture("Picture/redbird-midflap.png");
+     SDL_Texture* birdf;
+     if(bird.numberBird() == 0) birdf = graphics1.loadTexture("Picture/yellowbird-midflap.png");
+     else if(bird.numberBird() ==  1) birdf = graphics1.loadTexture("Picture/redbird-midflap.png");
+     else birdf = graphics1.loadTexture("Picture/bluebird-midflap.png");
      graphics1.renderTextureEx(birdf, SCREEN_WIDTH/7, SCREEN_HEIGHT/2, 0);
 	 graphics1.presentScene();
      ScrollingBackground base;
@@ -45,11 +48,12 @@ void renderBase(Graphics& graphics1)
     // SDL_Texture* TTgameOver = graphics1.loadTexture("Picture/TTgameOver.png");
 	  waitUntilKeyPressed();
 }
-void playGame()
+void playGame(Graphics &graphics)
 {
-         Graphics graphics;
-         renderBase(graphics);
+         //Graphics graphics;
          Bird bird;
+         renderBase(graphics,bird);
+         bird.loadBird(graphics);
          vector < PIPE > pipe;
          for(int i = 0; i <= 3; i++)
          {
@@ -73,7 +77,7 @@ void playGame()
                 graphics.renderTextureEx(TTgameOver, (350-TTgameOver_WIDTH)/2, (500-TTgameOver_HEIGHT)/2, 0);
                 graphics.presentScene();
                 SDL_Delay(2000);
-                playGame();
+                playGame(graphics);
             }
             graphics.prepareScene();
             frameStart = SDL_GetTicks();

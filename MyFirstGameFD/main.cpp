@@ -4,7 +4,9 @@ using namespace std;
 int main(int argc, char *argv[])
 {
    srand(time(0));
-   playGame();
+   Graphics graphics;
+   graphics.init();
+   playGame(graphics);
    return 1;
 }
 
