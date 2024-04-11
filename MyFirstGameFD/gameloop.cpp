@@ -54,6 +54,9 @@ void playGame(Graphics &graphics)
          Bird bird;
          renderBase(graphics,bird);
          bird.loadBird(graphics);
+         Mix_Chunk *sFlap = graphics.loadSound("sound/flap.mp3");
+         Mix_Chunk *sDead = graphics.loadSound("sound/dead.mp3");
+         Mix_Chunk *sPoint = graphics.loadSound("sound/point.wav");
          vector < PIPE > pipe;
          for(int i = 0; i <= 3; i++)
          {
@@ -74,6 +77,7 @@ void playGame(Graphics &graphics)
         {
             if(checkCollide(bird,pipe[0]))
             {
+                graphics.playSound(sDead);
                 graphics.renderTextureEx(TTgameOver, (350-TTgameOver_WIDTH)/2, (500-TTgameOver_HEIGHT)/2, 0);
                 graphics.presentScene();
                 SDL_Delay(2000);
@@ -84,7 +88,7 @@ void playGame(Graphics &graphics)
             while(SDL_PollEvent(&event)!=0){
               if (event.type == SDL_QUIT) quit = true;
               const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
-              if (currentKeyStates[SDL_SCANCODE_SPACE] || event.type == SDL_MOUSEBUTTONDOWN) { bird.turnUp();}
+              if (currentKeyStates[SDL_SCANCODE_SPACE] || event.type == SDL_MOUSEBUTTONDOWN) { bird.turnUp();graphics.playSound(sFlap);}
                else { bird.turnDown();}
             }
          bird.move();

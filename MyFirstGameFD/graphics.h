@@ -31,8 +31,11 @@ SDL_Texture* loadTexture(const char *filename);
 void renderTextureEx(SDL_Texture *texture, int x, int y,int angle);
 void blitRect(SDL_Texture *texture, SDL_Rect *src, int x, int y);
 void renderScrolling(const ScrollingBackground& bgr, int h);
+Mix_Music* loadMusic(const char* path);
+void playMusic(Mix_Music *gMusic);
+Mix_Chunk* loadSound(const char* path);
+void playSound(Mix_Chunk* gChunk);
 void quit();
-
 };
 
 

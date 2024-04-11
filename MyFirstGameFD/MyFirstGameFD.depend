@@ -5,15 +5,16 @@
 
 1711127913 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\game.cpp
 
-1712387792 c:\users\admin\documents\github\gamepj\myfirstgamefd\def.h
+1712847450 c:\users\admin\documents\github\gamepj\myfirstgamefd\def.h
 	<SDL.h>
 	<SDL_image.h>
+	<SDL_mixer.h>
 
-1712241910 c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.h
+1712847501 c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.h
 	"def.h"
 	<bits/stdc++.h>
 
-1712386807 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.cpp
+1712849380 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.cpp
 	"graphics.h"
 
 1711256872 c:\users\admin\documents\github\gamepj\myfirstgamefd\doge.h
@@ -23,7 +24,7 @@
 	<SDL_image.h>
 	"graphics.h"
 
-1712469963 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\gameloop.cpp
+1712848155 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\gameloop.cpp
 	"gameloop.h"
 	<bits/stdc++.h>
 
@@ -50,4 +51,6 @@
 1712391088 c:\users\admin\documents\github\gamepj\myfirstgamefd\pipe.h
 	<bits/stdc++.h>
 	"graphics.h"
+
+1712845778 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\sound.cpp
 
