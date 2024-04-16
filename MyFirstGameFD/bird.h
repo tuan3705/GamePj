@@ -23,19 +23,7 @@ private:
     int du=8;
     int indexAnimation=0;
 public:
-    void Flap(){
-       isFlap = true;
-    }
-    void notFlap(){
-       isFlap = false;
-    }
-    bool birdState(){
-        return isFlap;
-    }
-    int numberBird()
-    {
-        return randomBird;
-    }
+
     void updateTypeBird(int x)
     {
         typeBird+=x;
@@ -93,17 +81,12 @@ public:
         angle = 0;
 
     }
-void disY()
-{
-    y +=3;
-}
-void setAngle(int ag)
-{
-    angle=ag;
-}
-bool gameOver() {
-    return false;
-    return   y >= 500-BIRD_HEIGHT;
+    void disY()
+    {
+        y +=3;
     }
-
+    void setAngle(int ag)
+    {
+        angle=ag;
+    }
 };

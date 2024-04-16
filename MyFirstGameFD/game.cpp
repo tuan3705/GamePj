@@ -192,7 +192,22 @@ void Game::playGame(){
                 bird.render(bird,graphics);
                 graphics.presentScene();
             }
-            graphics.renderTextureEx(TTgameOver, (350-TTgameOver_WIDTH)/2, (500-TTgameOver_HEIGHT)/2,0);
+            for(int i = 1;i <= 209; i+=2)
+            {
+                graphics.prepareScene();
+                if(isDay) graphics.renderScrolling(bgrr,0);
+                else graphics.renderScrolling(bgrrN,0);
+                for(int i=0;i<pipe.size();i++)
+                {
+                    pipe[i].renderPipe( pipe[i].getX(), pipe[i].getY_Up(), graphics, 1);
+                    pipe[i].renderPipe( pipe[i].getX(), pipe[i].getY_Un(), graphics, 2);
+                }
+                graphics.renderScrolling(land,500);
+                bird.render(bird,graphics);
+                graphics.renderTextureEx(TTgameOver, (350-TTgameOver_WIDTH)/2 ,(500-TTgameOver_HEIGHT)/2 + 209 - i,0);
+                graphics.presentScene();
+            }
+            //graphics.renderTextureEx(TTgameOver, (350-TTgameOver_WIDTH)/2, (500-TTgameOver_HEIGHT)/2,0);
             renderMedal();
             renderSmallScore(score,263);
             renderSmallScore(bestScore,313);
