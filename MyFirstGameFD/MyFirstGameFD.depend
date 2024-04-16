@@ -1,7 +1,6 @@
 # depslib dependency file v1.0
-1713258980 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\main.cpp
+1713304237 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\main.cpp
 	<bits/stdc++.h>
-	"gameloop.h"
 	"game.h"
 
 1713303542 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\game.cpp
