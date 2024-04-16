@@ -8,6 +8,7 @@
 using namespace std;
 class Game{
 private:
+    int isDay;
     int isSound;
     int mouseX;
     int mouseY;
@@ -21,6 +22,7 @@ private:
     Graphics graphics;
     ScrollingBackground land;
     ScrollingBackground bgrr;
+    ScrollingBackground bgrrN;
     vector < PIPE > pipe;
     vector < SDL_Texture* > largeNum;
     vector < SDL_Texture* > smallNum;
@@ -40,13 +42,13 @@ public:
     bool isQuit();
     bool isPlay();
     bool checkCollide(PIPE pipe1);
-    void update();
     void initG();
     void clearG();
     void updateSound();
     void renderSound();
     bool updateScore(PIPE pipe1);
     void updateBestScore();
+    void changeBackground();
     void renderLargeScore(int sc);
     void renderSmallScore(int sc,int posY);
     void renderMedal();

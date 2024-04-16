@@ -48,6 +48,7 @@
 		<Unit filename="menu.h" />
 		<Unit filename="pipe.cpp" />
 		<Unit filename="pipe.h" />
+		<Unit filename="score.txt" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

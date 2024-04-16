@@ -4,7 +4,7 @@
 	"gameloop.h"
 	"game.h"
 
-1713301087 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\game.cpp
+1713303542 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\game.cpp
 	"game.h"
 	<bits/stdc++.h>
 
@@ -57,7 +57,7 @@
 
 1712845778 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\sound.cpp
 
-1713301702 c:\users\admin\documents\github\gamepj\myfirstgamefd\game.h
+1713303102 c:\users\admin\documents\github\gamepj\myfirstgamefd\game.h
 	<bits/stdc++.h>
 	"def.h"
 	"bird.h"
