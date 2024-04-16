@@ -5,15 +5,16 @@
 using namespace std;
 class Bird{
 private:
-    SDL_Texture* birdFlapUp;
-    SDL_Texture* birdFlapMid;
-    SDL_Texture* birdFlapDown;
+    SDL_Texture* birdFlapUp[3];
+    SDL_Texture* birdFlapMid[3];
+    SDL_Texture* birdFlapDown[3];
     vector< string > TTBirdUp = { "Picture/yellowbird-upflap.png", "Picture/redbird-upflap.png", "Picture/bluebird-upflap.png"};
     vector< string > TTBirdMid ={ "Picture/yellowbird-midflap.png", "Picture/redbird-midflap.png", "Picture/bluebird-midflap.png"};
     vector< string > TTBirdDown ={ "Picture/yellowbird-downflap.png", "Picture/redbird-downflap.png", "Picture/bluebird-downflap.png"};
     int x = SCREEN_WIDTH/7;
     int y = SCREEN_HEIGHT/2;
     int randomBird = rand()%3;
+    int typeBird = 0;
     int Gravity = 1;
     bool isFlap;
     int angle=0;
@@ -35,11 +36,18 @@ public:
     {
         return randomBird;
     }
+    void updateTypeBird(int x)
+    {
+        typeBird+=x;
+        typeBird = (typeBird+3)%3;
+    }
     void loadBird(Graphics& graphics)
     {
-        birdFlapUp = graphics.loadTexture(TTBirdUp[randomBird].c_str());
-        birdFlapMid = graphics.loadTexture(TTBirdMid[randomBird].c_str());
-        birdFlapDown = graphics.loadTexture(TTBirdDown[randomBird].c_str());
+        for(int i=0;i<3;i++){
+         birdFlapUp[i] = graphics.loadTexture(TTBirdUp[i].c_str());
+         birdFlapMid[i] = graphics.loadTexture(TTBirdMid[i].c_str());
+         birdFlapDown[i] = graphics.loadTexture(TTBirdDown[i].c_str());
+        }
     }
     void UpdateIndexAnimation(){
         indexAnimation+=1;
@@ -73,10 +81,10 @@ public:
     {
         UpdateIndexAnimation();
      if(GetIndexAnimation()<17)
-         graphics.renderTextureEx(birdFlapUp,bird.x,bird.y,angle);
+         graphics.renderTextureEx(birdFlapUp[typeBird],bird.x,bird.y,angle);
      else if(GetIndexAnimation()<33)
-         graphics.renderTextureEx(birdFlapMid,bird.x,bird.y,angle);
-     else  graphics.renderTextureEx(birdFlapDown,bird.x,bird.y,angle);
+         graphics.renderTextureEx(birdFlapMid[typeBird],bird.x,bird.y,angle);
+     else  graphics.renderTextureEx(birdFlapDown[typeBird],bird.x,bird.y,angle);
     }
     void reset()
     {

@@ -23,6 +23,8 @@ void Graphics::init() {
             logErrorAndExit( "SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError() );
         }
 
+    SDL_Surface* icon = IMG_Load("Picture/favicon.ico");
+    SDL_SetWindowIcon(window, icon);
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
     SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 }

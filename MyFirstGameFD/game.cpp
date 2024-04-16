@@ -11,17 +11,31 @@ void Game::initG()
         tPipe.setPosY(rand()%141);
         pipe.push_back(tPipe);
     }
-    for(int i= 0;i <= 9;i ++)
+    for(int i= 0;i <= 9;i++)
     {
         string tmp1 = "Picture/BigNum/"+to_string(i)+".png";
         SDL_Texture* num = graphics.loadTexture(tmp1.c_str());
         largeNum.push_back(num);
+        string tmp2 = "Picture/SmallNum/"+to_string(i)+".png";
+        SDL_Texture* num2 = graphics.loadTexture(tmp2.c_str());
+        smallNum.push_back(num2);
     }
+    for(int i = 0; i<= 3;i++)
+    {
+        string tmp1 = "Picture/medal/"+to_string(i)+".png";
+        SDL_Texture* md = graphics.loadTexture(tmp1.c_str());
+        medal.push_back(md);
+    }
+    fstream file("score.txt");
+    file >> bestScore;
+    file.close();
     Play = 0;
     isSound = 1;
     score = 0;
     die = 0;
     quit = false;
+    RightButton = graphics.loadTexture("Picture/nextRight.png");
+    LeftButton = graphics.loadTexture("Picture/nextLeft.png");
     Sound = graphics.loadTexture("Picture/soundon.png");
     NotSound = graphics.loadTexture("Picture/soundoff.png");
     replay = graphics.loadTexture("Picture/replay.png");
@@ -59,7 +73,13 @@ bool Game::updateScore(PIPE pipe1)
 {
    return (bird.getX() == pipe1.getX());
 }
-void Game::renderScore(int sc)
+void Game::updateBestScore()
+{
+    bestScore = score;
+    fstream file("score.txt");
+    file << bestScore;
+}
+void Game::renderLargeScore(int sc)
 {
     string s = to_string(sc);
     int width = 30;
@@ -69,6 +89,24 @@ void Game::renderScore(int sc)
         graphics.renderTextureEx(largeNum[s[i]-'0'],Pos,10,0);
         Pos += 30;
     }
+}
+void Game::renderSmallScore(int sc,int posY)
+{
+    string s = to_string(sc);
+    int width = 21;
+    int Pos = 271  - 21*s.size();
+    for(int i = 0; i < s.size(); i++)
+    {
+        graphics.renderTextureEx(smallNum[s[i]-'0'],Pos,posY,0);
+        Pos += 21;
+    }
+}
+void Game::renderMedal()
+{
+    if(score <= 9 ) graphics.renderTextureEx(medal[0],75,263,0);
+    else if(score <= 19) graphics.renderTextureEx(medal[1],75,263,0);
+    else if(score <= 29) graphics.renderTextureEx(medal[2],75,263,0);
+    else graphics.renderTextureEx(medal[3],75,263,0);
 }
 void Game::updateSound()
 {
@@ -90,15 +128,28 @@ void Game::prepare(){
     bird.render(bird,graphics);
     graphics.renderTextureEx(message,(SCREEN_WIDTH-MESSAGE_WIDTH)/2,(SCREEN_HEIGHT-MESSAGE_HEIGHT-LAND_HEIGHT)/2,0);
     renderSound();
+    graphics.renderTextureEx(LeftButton,31,317,0);
+    graphics.renderTextureEx(RightButton,90,317,0);
     graphics.presentScene();
     SDL_Delay(16);
     SDL_Event e;
 
     if ( SDL_PollEvent(&e) != 0)
     {
-        if(e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_m ) updateSound();
-        if((e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_SPACE)|| e.type == SDL_MOUSEBUTTONDOWN ) Play = true;
-       // if(e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_m ) updateSound();
+        if(e.type == SDL_QUIT) quit = true;
+        if(e.type == SDL_KEYDOWN)
+        {
+            if(e.key.keysym.sym == SDLK_m) updateSound();
+            if(e.key.keysym.sym == SDLK_SPACE) Play = true;
+        }
+        if(e.type == SDL_MOUSEBUTTONDOWN )
+        {
+            SDL_GetMouseState(&mouseX, &mouseY);
+            if(mouseX >= 10 && mouseX <= 42 && mouseY >= 10 && mouseY <= 34 ) updateSound();
+            else if(mouseX >= 31 && mouseX <= 44 && mouseY >= 317 && mouseY <= 333 )bird.updateTypeBird(-1);
+            else if(mouseX >= 90 && mouseX <= 103 && mouseY >= 317 && mouseY <= 333 )bird.updateTypeBird(1);
+            else Play = true;
+        }
     }
 }
 void Game::playGame(){
@@ -108,6 +159,7 @@ void Game::playGame(){
     while(!die)
     {
         if(checkCollide(pipe[0])){
+            if(score>bestScore) updateBestScore();
             if(isSound) graphics.playSound(sDead);
             SDL_Delay(100);
             bird.setAngle(180);
@@ -127,17 +179,34 @@ void Game::playGame(){
                 graphics.presentScene();
             }
             graphics.renderTextureEx(TTgameOver, (350-TTgameOver_WIDTH)/2, (500-TTgameOver_HEIGHT)/2,0);
+            renderMedal();
+            renderSmallScore(score,263);
+            renderSmallScore(bestScore,313);
             graphics.renderTextureEx(replay,(350-100)/2,360,0);
             graphics.presentScene();
             die = 1;
             while(true)
             {
-                if(SDL_PollEvent(&event) != 0 && event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_SPACE)
+                if(SDL_PollEvent(&event) != 0)
                 {
-                    resetGame();
-                    Play = 0;
-                    break;
-                }
+                    if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_SPACE)
+                    {
+                        resetGame();
+                        Play = 0;
+                        break;
+                    }
+                    if(event.type == SDL_MOUSEBUTTONDOWN)
+                    {
+                        SDL_GetMouseState(&mouseX,&mouseY);
+                        if(mouseX >= 125 && mouseX <= 225 && mouseY >= 360 && mouseY <= 416)
+                        {
+                            resetGame();
+                            Play = 0;
+                            break;
+                        }
+                    }
+                    if(event.type == SDL_QUIT ) { quit = 1; break;}
+                 }
             }
         }
         else{
@@ -148,7 +217,7 @@ void Game::playGame(){
          graphics.prepareScene();
          frameStart = SDL_GetTicks();
          while(SDL_PollEvent(&event)!=0){
-            if (event.type == SDL_QUIT) quit = true;
+            if (event.type == SDL_QUIT) {quit = true; die = 1;}
             const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
             if(currentKeyStates[SDL_SCANCODE_SPACE] || event.type == SDL_MOUSEBUTTONDOWN){
                 bird.turnUp();
@@ -156,6 +225,11 @@ void Game::playGame(){
             }
             else bird.turnDown();
             if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_m ) updateSound();
+            if(event.type == SDL_MOUSEBUTTONDOWN)
+            {
+                SDL_GetMouseState(&mouseX,&mouseY);
+                if(mouseX >= 10 && mouseX <= 42 && mouseY >=10 && mouseY <= 34 ) updateSound();
+            }
          }
          bird.move();
          bgrr.scroll(2);
@@ -173,7 +247,7 @@ void Game::playGame(){
              tPipe.setPosY(rand()%141);
              pipe.push_back(tPipe);
          }
-         renderScore(score);
+         renderLargeScore(score);
          renderSound();
          land.scroll(2);
          graphics.renderScrolling(land,500);

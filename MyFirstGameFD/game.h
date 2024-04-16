@@ -9,10 +9,13 @@ using namespace std;
 class Game{
 private:
     int isSound;
+    int mouseX;
+    int mouseY;
     bool Play;
     bool quit;
     bool die;
     int score;
+    int bestScore;
     PIPE tPipe;
     Bird bird;
     Graphics graphics;
@@ -20,6 +23,10 @@ private:
     ScrollingBackground bgrr;
     vector < PIPE > pipe;
     vector < SDL_Texture* > largeNum;
+    vector < SDL_Texture* > smallNum;
+    vector < SDL_Texture* > medal;
+    SDL_Texture* RightButton;
+    SDL_Texture* LeftButton;
     SDL_Texture* replay;
     SDL_Texture* message;
     SDL_Texture* TTgameOver;
@@ -39,7 +46,10 @@ public:
     void updateSound();
     void renderSound();
     bool updateScore(PIPE pipe1);
-    void renderScore(int sc);
+    void updateBestScore();
+    void renderLargeScore(int sc);
+    void renderSmallScore(int sc,int posY);
+    void renderMedal();
     void prepare();
     void playGame();
     void resetGame();
