@@ -1,9 +1,12 @@
 # depslib dependency file v1.0
-1712469963 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\main.cpp
+1713258980 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\main.cpp
 	<bits/stdc++.h>
 	"gameloop.h"
+	"game.h"
 
-1711127913 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\game.cpp
+1713274725 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\game.cpp
+	"game.h"
+	<bits/stdc++.h>
 
 1712847450 c:\users\admin\documents\github\gamepj\myfirstgamefd\def.h
 	<SDL.h>
@@ -24,11 +27,11 @@
 	<SDL_image.h>
 	"graphics.h"
 
-1712848155 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\gameloop.cpp
+1713255124 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\gameloop.cpp
 	"gameloop.h"
 	<bits/stdc++.h>
 
-1712469007 c:\users\admin\documents\github\gamepj\myfirstgamefd\bird.h
+1713260311 c:\users\admin\documents\github\gamepj\myfirstgamefd\bird.h
 	"graphics.h"
 	<bits/stdc++.h>
 
@@ -43,7 +46,7 @@
 
 1712216278 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\menu.cpp
 
-1712391522 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\pipe.cpp
+1712911898 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\pipe.cpp
 	"pipe.h"
 
 1712241910 c:\users\admin\documents\github\gamepj\myfirstgamefd\background.h
@@ -53,4 +56,11 @@
 	"graphics.h"
 
 1712845778 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\sound.cpp
+
+1713274567 c:\users\admin\documents\github\gamepj\myfirstgamefd\game.h
+	<bits/stdc++.h>
+	"def.h"
+	"bird.h"
+	"background.h"
+	"pipe.h"
 

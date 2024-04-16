@@ -22,6 +22,15 @@ private:
     int du=8;
     int indexAnimation=0;
 public:
+    void Flap(){
+       isFlap = true;
+    }
+    void notFlap(){
+       isFlap = false;
+    }
+    bool birdState(){
+        return isFlap;
+    }
     int numberBird()
     {
         return randomBird;
@@ -69,7 +78,21 @@ public:
          graphics.renderTextureEx(birdFlapMid,bird.x,bird.y,angle);
      else  graphics.renderTextureEx(birdFlapDown,bird.x,bird.y,angle);
     }
+    void reset()
+    {
+        x = SCREEN_WIDTH/7;
+        y = SCREEN_HEIGHT/2;
+        angle = 0;
 
+    }
+void disY()
+{
+    y +=3;
+}
+void setAngle(int ag)
+{
+    angle=ag;
+}
 bool gameOver() {
     return false;
     return   y >= 500-BIRD_HEIGHT;

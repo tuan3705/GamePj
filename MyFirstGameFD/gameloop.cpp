@@ -9,6 +9,7 @@ bool checkCollide(Bird bird , PIPE pipe)
       return true;
     if ( bird.getX() <= pipe.getX() + 52 && bird.getX() + 34 >= pipe.getX() && bird.getY() <= pipe.getY_Up() + 320 && bird.getY() + 24 >= pipe.getY_Up())
        return true;
+    if(bird.getY() >= 465) return true;
     return false;
 }
 void waitUntilKeyPressed()
@@ -16,12 +17,19 @@ void waitUntilKeyPressed()
     SDL_Event e;
     while (true) {
         if ( SDL_PollEvent(&e) != 0 &&
-             (e.type == SDL_KEYDOWN || e.type == SDL_QUIT || e.type == SDL_MOUSEBUTTONDOWN) )
+        (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_SPACE)|| e.type == SDL_MOUSEBUTTONDOWN )
             return;
         SDL_Delay(100);
     }
 
 }
+//void IsPlay()
+//{
+//    SDL_Event e;
+//    while(true) {
+//        if( SDL_PollEvent(&e) != 0 && )
+//    }
+//}
 void renderBase(Graphics& graphics1,Bird bird)
 {
      //graphics1.init();
@@ -102,7 +110,7 @@ void playGame(Graphics &graphics)
          }
          if(pipe[0].checkPipeOut())
          {
-             pipe.erase(pipe.begin()+0);
+             pipe.erase(pipe.begin());
              PIPE pipe1;
              pipe1.loadTexturePipe(graphics);
              pipe1.setPosX(pipe[2].getX()+220);

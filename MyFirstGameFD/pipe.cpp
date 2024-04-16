@@ -21,7 +21,7 @@ void PIPE::setPosX(int PosX)
 void PIPE::setPosY(int PosY)
 {
     upper.y = -320 + 100 + PosY;
-    under.y = PosY + 220;
+    under.y = PosY + 270;
 }
 int PIPE::getX()
 {
