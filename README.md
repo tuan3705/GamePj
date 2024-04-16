@@ -2,7 +2,7 @@ Họ và tên: Dương Anh Tuấn </br>
 Mã sinh viên: 23021704 </br>
 Chủ đề game: Flappy bird </br>
 Hướng dẫn chơi: </br>
--Nhấn space hoặc click chuột để chơi <\br>
+-Nhấn space hoặc click chuột để chơi </br>
 -Có thể sử dụng chuột để nhấn vào các nút hiển thị trên màn hình sẽ thực hiện các tính năng tương ứng </br>
 Các tính năng có trong game: </br>
 -Thay đổi màu của chim, hình nền </br>
