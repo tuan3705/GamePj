@@ -1,14 +1,19 @@
-Họ và tên: Dương Anh Tuấn </br>
-Mã sinh viên: 23021704 </br>
-Chủ đề game: Flappy bird </br>
-Hướng dẫn chơi: </br>
--Nhấn space hoặc click chuột để chơi </br>
--Có thể sử dụng chuột để nhấn vào các nút hiển thị trên màn hình sẽ thực hiện các tính năng tương ứng </br>
-Các tính năng có trong game: </br>
--Thay đổi màu của chim, hình nền </br>
--Tắt bật âm thanh </br>
--Chim chuyển động mượt mà và có liên quan đến góc lúc bay lên và bay xuống</br>
--Hiệu ứng lúc thua </br>
--Có thể lưu được điểm cao nhất giữa các lần chơi và in huy chương theo cách mức điểm nhất định </br>
-Sản phẩm của e được tự tay làm hoàn toàn qua các bài học hàng tuần của cô </br>
-với những lý do trên e mong muốn nhận được ngưỡng điểm 8,5+
+1. Thông tin sinh viên
+ Họ và tên: Dương Anh Tuấn </br>
+ Mã sinh viên: 23021704 </br>
+2.Chủ đề game: Flappy bird </br>
+3.Ngưỡng điểm mong muốn: 8.5+ </br>
+4.Các tính năng: </br>
+-Xử lý game theo nhịp độ và các trạng thái chuẩn bị,menu,chơi,tạm dừng</br>
+-Có thể thay đổi nhân vật, bật/tắt âm thanh, tạm dừng game</br>
+-Hiện điểm trong lúc đang chơi, lúc dừng,lúc thua.Hiển thị huy chương theo số điểm đạt được và điểm kỷ lục khi thua </br>
+-Sinh cột một cách ngẫu nhiên tránh game nhàm chán</br>
+-vẽ và cập nhật chim và xử lý va chạm với các hiệu ứng khi bay lên,bay xuống</br>
+-Nhạc phát phụ thuộc vào hoạt động của người chơi </br>
+-Hiệu ứng chim rơi xuống đất, cột biến mất dần và gameover dần dần hiển thị lúc thua giúp thú vị hơn</br>
+-Giới hạn fps cho game </br>
+-Thêm icon cho game </br>
+Sản phẩm của e được tự tay làm hoàn toàn qua các bài học hàng tuần của cô và trên lazyfoo </br>
+Ảnh và âm thanh em chủ yếu lấy ở các link sau và lượm nhặt: </br>
+https://github.com/Ducanger/Flappy-Doge-SDL2/tree/main </br>
+https://github.com/samuelcust/flappy-bird-assets/tree/master/sprites </br>
