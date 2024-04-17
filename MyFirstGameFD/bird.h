@@ -19,8 +19,8 @@ private:
     bool isFlap;
     int angle=0;
     int dy;
-    double dd=3;
-    int du=8;
+    double dd=1;
+    int du=5;
     int indexAnimation=0;
 public:
 
@@ -88,5 +88,14 @@ public:
     void setAngle(int ag)
     {
         angle=ag;
+    }
+    void clearBird()
+    {
+        for(int i = 0;i < 3; i++)
+        {
+            SDL_DestroyTexture(birdFlapUp[i]);
+            SDL_DestroyTexture(birdFlapMid[i]);
+            SDL_DestroyTexture(birdFlapDown[i]);
+        }
     }
 };

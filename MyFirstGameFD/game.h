@@ -27,6 +27,10 @@ private:
     vector < SDL_Texture* > largeNum;
     vector < SDL_Texture* > smallNum;
     vector < SDL_Texture* > medal;
+    SDL_Texture* button;
+    SDL_Texture* pause;
+    SDL_Texture* pauseTab;
+    SDL_Texture* resume;
     SDL_Texture* RightButton;
     SDL_Texture* LeftButton;
     SDL_Texture* replay;
@@ -45,7 +49,7 @@ public:
     void initG();
     void clearG();
     void updateSound();
-    void renderSound();
+    void renderSound(int x,int y);
     bool updateScore(PIPE pipe1);
     void updateBestScore();
     void changeBackground();
@@ -54,6 +58,8 @@ public:
     void renderMedal();
     void prepare();
     void playGame();
+    void animation_dead();
+    void pause_game();
     void resetGame();
 
 };

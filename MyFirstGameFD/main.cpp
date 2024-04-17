@@ -16,6 +16,6 @@ int main(int argc, char *argv[])
        }
    }
    game.clearG();
-   return 1;
+   return 0;
 }
 

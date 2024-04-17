@@ -16,6 +16,8 @@ public:
     void scroll(int distance);
     void setPosX(int PosX);
     void setPosY(int PosY);
+    void disY();
+    void clearPipe();
     int getX();
     int getY_Un();
     int getY_Up();

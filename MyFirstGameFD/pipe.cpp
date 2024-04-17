@@ -23,6 +23,16 @@ void PIPE::setPosY(int PosY)
     upper.y = -320 + 100 + PosY;
     under.y = PosY + 270;
 }
+void PIPE::disY()
+{
+    upper.y -= 5;
+    under.y += 5;
+}
+void PIPE::clearPipe()
+{
+    SDL_DestroyTexture(pipeUp);
+    SDL_DestroyTexture(pipeUn);
+}
 int PIPE::getX()
 {
     return (int)upper.x;

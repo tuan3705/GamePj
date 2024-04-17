@@ -28,11 +28,6 @@ void Graphics::init() {
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
     SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 }
-void Graphics::prepareScene(SDL_Texture* background)
-{
-    SDL_RenderClear(renderer);
-    SDL_RenderCopy( renderer, background, NULL, NULL);
-}
 void Graphics::prepareScene()
 {
     SDL_RenderClear(renderer);
@@ -72,26 +67,6 @@ void Graphics::quit()
     Mix_Quit();
     SDL_Quit();
     IMG_Quit();
-}
- Mix_Music* Graphics::loadMusic(const char* path)
-{
-        Mix_Music *gMusic = Mix_LoadMUS(path);
-        if (gMusic == nullptr) {
-            SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_ERROR,
-                           "Could not load music! SDL_mixer Error: %s", Mix_GetError());
-        }
-        return gMusic;
-}
-void Graphics::playMusic(Mix_Music *gMusic)
-{
-        if (gMusic == nullptr) return;
-
-        if (Mix_PlayingMusic() == 0) {
-            Mix_PlayMusic( gMusic, -1 );
-        }
-        else if( Mix_PausedMusic() == 1 ) {
-            Mix_ResumeMusic();
-        }
 }
 Mix_Chunk* Graphics::loadSound(const char* path) {
         Mix_Chunk* gChunk = Mix_LoadWAV(path);

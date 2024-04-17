@@ -1,22 +1,22 @@
 # depslib dependency file v1.0
-1713304237 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\main.cpp
+1713348650 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\main.cpp
 	<bits/stdc++.h>
 	"game.h"
 
-1713305864 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\game.cpp
+1713361118 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\game.cpp
 	"game.h"
 	<bits/stdc++.h>
 
-1712847450 c:\users\admin\documents\github\gamepj\myfirstgamefd\def.h
+1713354525 c:\users\admin\documents\github\gamepj\myfirstgamefd\def.h
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_mixer.h>
 
-1713295729 c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.h
+1713361189 c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.h
 	"def.h"
 	<bits/stdc++.h>
 
-1713297646 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.cpp
+1713359282 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.cpp
 	"graphics.h"
 
 1711256872 c:\users\admin\documents\github\gamepj\myfirstgamefd\doge.h
@@ -30,7 +30,7 @@
 	"gameloop.h"
 	<bits/stdc++.h>
 
-1713305461 c:\users\admin\documents\github\gamepj\myfirstgamefd\bird.h
+1713360240 c:\users\admin\documents\github\gamepj\myfirstgamefd\bird.h
 	"graphics.h"
 	<bits/stdc++.h>
 
@@ -45,18 +45,18 @@
 
 1712216278 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\menu.cpp
 
-1712911898 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\pipe.cpp
+1713360558 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\pipe.cpp
 	"pipe.h"
 
 1712241910 c:\users\admin\documents\github\gamepj\myfirstgamefd\background.h
 
-1712391088 c:\users\admin\documents\github\gamepj\myfirstgamefd\pipe.h
+1713360480 c:\users\admin\documents\github\gamepj\myfirstgamefd\pipe.h
 	<bits/stdc++.h>
 	"graphics.h"
 
 1712845778 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\sound.cpp
 
-1713303102 c:\users\admin\documents\github\gamepj\myfirstgamefd\game.h
+1713357782 c:\users\admin\documents\github\gamepj\myfirstgamefd\game.h
 	<bits/stdc++.h>
 	"def.h"
 	"bird.h"

@@ -4,7 +4,7 @@
 #include <SDL_image.h>
 #include <SDL_mixer.h>
 #define WINDOW_TITLE "Flappy Bird"
-const int PIPE_SPACE = 160;
+const int PIPE_SPACE = 220;
 const int PIPE_DISTANCE = 220;
 const int LAND_HEIGHT = 140;
 const int BIRD_WIDTH = 34;
