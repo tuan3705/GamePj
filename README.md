@@ -1,9 +1,9 @@
 1. Thông tin sinh viên
  Họ và tên: Dương Anh Tuấn </br>
  Mã sinh viên: 23021704 </br>
-2.Chủ đề game: Flappy bird </br>
-3.Ngưỡng điểm mong muốn: 8.5+ </br>
-4.Các tính năng: </br>
+2. Chủ đề game: Flappy bird </br>
+3. Ngưỡng điểm mong muốn: 8.5+ </br>
+4. Các tính năng: </br>
 -Xử lý game theo nhịp độ và các trạng thái chuẩn bị,menu,chơi,tạm dừng</br>
 -Có thể thay đổi nhân vật, bật/tắt âm thanh, tạm dừng game</br>
 -Hiện điểm trong lúc đang chơi, lúc dừng,lúc thua.Hiển thị huy chương theo số điểm đạt được và điểm kỷ lục khi thua </br>
