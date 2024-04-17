@@ -4,7 +4,7 @@ void PIPE::loadTexturePipe(Graphics g)
     pipeUp = g.loadTexture(PIPEUP);
     pipeUn = g.loadTexture(PIPEUN);
 }
-void PIPE::renderPipe( int x, int y,Graphics g, int role)
+void PIPE::renderPipe( int x, int y, Graphics g, int role)
 {
     if(role == 1) g.renderTextureEx(pipeUp, x, y, 0);
     else if(role == 2) g.renderTextureEx(pipeUn, x, y, 0);

@@ -9,7 +9,7 @@ private:
    char* PIPEUN = "Picture/pipe_under.png";
     SDL_Texture* pipeUp ;
     SDL_Texture* pipeUn ;
-   SDL_Rect upper,under;
+   SDL_Rect upper, under;
 public:
     void loadTexturePipe(Graphics g);
     void renderPipe( int x, int y, Graphics g, int role);

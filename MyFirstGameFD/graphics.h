@@ -22,17 +22,16 @@ private:
     SDL_Renderer *renderer;
     SDL_Window *window;
 public:
-void logErrorAndExit(const char* msg, const char* error);
-void init();
-void prepareScene();
-void presentScene();
-SDL_Texture* loadTexture(const char *filename);
-void renderTextureEx(SDL_Texture *texture, int x, int y,int angle);
-void blitRect(SDL_Texture *texture, SDL_Rect *src, int x, int y);
-void renderScrolling(const ScrollingBackground& bgr, int h);
-Mix_Chunk* loadSound(const char* path);
-void playSound(Mix_Chunk* gChunk);
-void quit();
+    void logErrorAndExit(const char* msg, const char* error);
+    void init();
+    void prepareScene();
+    void presentScene();
+    SDL_Texture* loadTexture(const char *filename);
+    void renderTextureEx(SDL_Texture *texture, int x, int y, int angle);
+    void renderScrolling(const ScrollingBackground& bgr, int h);
+    Mix_Chunk* loadSound(const char* path);
+    void playSound(Mix_Chunk* gChunk);
+    void quit();
 };
 
 

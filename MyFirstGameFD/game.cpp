@@ -5,24 +5,24 @@ void Game::initG()
 {
     graphics.init();
     tPipe.loadTexturePipe(graphics);
-    for(int i = 0;i <= 3;i ++)
+    for(int i = 0;i <= 3;i++)
     {
-        tPipe.setPosX(350 + 220*i);
-        tPipe.setPosY(rand()%141);
+        tPipe.setPosX(350 + 220 * i);
+        tPipe.setPosY(rand() % 141);
         pipe.push_back(tPipe);
     }
-    for(int i= 0;i <= 9;i++)
+    for(int i= 0;i <= 9; i++)
     {
-        string tmp1 = "Picture/BigNum/"+to_string(i)+".png";
+        string tmp1 = "Picture/BigNum/" + to_string(i) + ".png";
         SDL_Texture* num = graphics.loadTexture(tmp1.c_str());
         largeNum.push_back(num);
-        string tmp2 = "Picture/SmallNum/"+to_string(i)+".png";
+        string tmp2 = "Picture/SmallNum/" + to_string(i) + ".png";
         SDL_Texture* num2 = graphics.loadTexture(tmp2.c_str());
         smallNum.push_back(num2);
     }
-    for(int i = 0; i<= 2;i++)
+    for(int i = 0; i <= 2; i++)
     {
-        string tmp1 = "Picture/medal/"+to_string(i)+".png";
+        string tmp1 = "Picture/medal/"+to_string(i) + ".png";
         SDL_Texture* md = graphics.loadTexture(tmp1.c_str());
         medal.push_back(md);
     }
@@ -84,8 +84,8 @@ void Game::updateBestScore()
 }
 void Game::changeBackground()
 {
-    isDay+=1;
-    isDay%=2;
+    isDay += 1;
+    isDay %= 2;
 }
 void Game::renderLargeScore(int sc)
 {
@@ -94,48 +94,48 @@ void Game::renderLargeScore(int sc)
     int Pos = (SCREEN_WIDTH - width*s.size())/2;
     for(int i = 0; i < s.size(); i++)
     {
-        graphics.renderTextureEx(largeNum[s[i]-'0'],Pos,10,0);
+        graphics.renderTextureEx(largeNum[s[i]-'0'], Pos, 10, 0);
         Pos += 30;
     }
 }
-void Game::renderSmallScore(int sc,int posY)
+void Game::renderSmallScore(int sc, int posY)
 {
     string s = to_string(sc);
     int width = 21;
     int Pos = 271  - 21*s.size();
     for(int i = 0; i < s.size(); i++)
     {
-        graphics.renderTextureEx(smallNum[s[i]-'0'],Pos,posY,0);
+        graphics.renderTextureEx(smallNum[s[i]-'0'], Pos, posY, 0);
         Pos += 21;
     }
 }
 void Game::renderMedal()
 {
-    if(score >= 10 && score < 20 ) graphics.renderTextureEx(medal[0],75,263,0);
-    else if(score >= 20 && score < 30) graphics.renderTextureEx(medal[1],75,263,0);
-    else if(score >= 30) graphics.renderTextureEx(medal[2],75,263,0);
+    if(score >= 10 && score < 20 ) graphics.renderTextureEx(medal[0], 75, 263, 0);
+    else if(score >= 20 && score < 30) graphics.renderTextureEx(medal[1], 75, 263, 0);
+    else if(score >= 30) graphics.renderTextureEx(medal[2], 75, 263, 0);
 }
 void Game::updateSound()
 {
     isSound++;
-    isSound%=2;
+    isSound %= 2;
 }
 void Game::renderSound(int x,int y)
 {
-    if(isSound) graphics.renderTextureEx(Sound,x,y,0);
-    else graphics.renderTextureEx(NotSound,x,y,0);
+    if(isSound) graphics.renderTextureEx(Sound, x, y, 0);
+    else graphics.renderTextureEx(NotSound, x, y, 0);
 }
 void Game::animation_dead(){
     if(isSound) graphics.playSound(sDead);
     SDL_Delay(100);
     bird.setAngle(180);
     SDL_Event event;
-    while(bird.getY()<=485)
+    while(bird.getY() <= 485)
     {
         graphics.prepareScene();
-        if(isDay) graphics.renderScrolling(bgrr,0);
-        else graphics.renderScrolling(bgrrN,0);
-        for(int i=0;i<pipe.size();i++)
+        if(isDay) graphics.renderScrolling(bgrr, 0);
+        else graphics.renderScrolling(bgrrN, 0);
+        for(int i = 0; i < pipe.size(); i++)
         {
             pipe[i].disY();
             pipe[i].renderPipe( pipe[i].getX(), pipe[i].getY_Up(), graphics, 1);
@@ -149,8 +149,8 @@ void Game::animation_dead(){
     for(int i = 1;i <= 50; i++ )
     {
         graphics.prepareScene();
-        if(isDay) graphics.renderScrolling(bgrr,0);
-        else graphics.renderScrolling(bgrrN,0);
+        if(isDay) graphics.renderScrolling(bgrr, 0);
+        else graphics.renderScrolling(bgrrN, 0);
         for(int j = 0; j < pipe.size(); j++)
         {
             pipe[j].disY();
@@ -158,28 +158,28 @@ void Game::animation_dead(){
             pipe[j].renderPipe( pipe[j].getX(), pipe[j].getY_Un(), graphics, 2);
         }
         graphics.renderScrolling(land,500);
-        bird.render(bird,graphics);
+        bird.render(bird, graphics);
         graphics.presentScene();
     }
     for(int i = 1;i <= 209; i+=2 )
     {
         graphics.prepareScene();
-        if(isDay) graphics.renderScrolling(bgrr,0);
-        else graphics.renderScrolling(bgrrN,0);
-        for(int i=0;i<pipe.size();i++)
+        if(isDay) graphics.renderScrolling(bgrr, 0);
+        else graphics.renderScrolling(bgrrN, 0);
+        for(int i = 0; i < pipe.size(); i++)
         {
             pipe[i].renderPipe( pipe[i].getX(), pipe[i].getY_Up(), graphics, 1);
             pipe[i].renderPipe( pipe[i].getX(), pipe[i].getY_Un(), graphics, 2);
         }
-        graphics.renderScrolling(land,500);
-        bird.render(bird,graphics);
-        graphics.renderTextureEx(TTgameOver, (350-TTgameOver_WIDTH)/2 ,(500-TTgameOver_HEIGHT)/2 + 209 - i,0);
+        graphics.renderScrolling(land, 500);
+        bird.render(bird, graphics);
+        graphics.renderTextureEx(TTgameOver, (350-TTgameOver_WIDTH)/2 , (500-TTgameOver_HEIGHT)/2 + 209 - i, 0);
         graphics.presentScene();
     }
     renderMedal();
-    renderSmallScore(score,263);
-    renderSmallScore(bestScore,313);
-    graphics.renderTextureEx(replay,(350-100)/2,360,0);
+    renderSmallScore(score, 263);
+    renderSmallScore(bestScore, 313);
+    graphics.renderTextureEx(replay, (350-100)/2, 360, 0);
     graphics.presentScene();
     die = 1;
     while(true)
@@ -206,25 +206,25 @@ void Game::pause_game(){
     while(true)
     {
         graphics.prepareScene();
-        if(isDay) graphics.renderScrolling(bgrr,0);
-        else graphics.renderScrolling(bgrrN,0);
-        for(int i = 0;i < pipe.size();i++)
+        if(isDay) graphics.renderScrolling(bgrr, 0);
+        else graphics.renderScrolling(bgrrN, 0);
+        for(int i = 0; i < pipe.size(); i++)
         {
             pipe[i].renderPipe(pipe[i].getX(), pipe[i].getY_Up(), graphics, 1);
             pipe[i].renderPipe( pipe[i].getX(), pipe[i].getY_Un(), graphics, 2);
         }
         renderLargeScore(score);
-        graphics.renderScrolling(land,500);
-        bird.render(bird,graphics);
+        graphics.renderScrolling(land, 500);
+        bird.render(bird, graphics);
 
         graphics.renderTextureEx(pauseTab, (SCREEN_WIDTH-250)/2, (SCREEN_HEIGHT-128)/2-17, 0);
         graphics.renderTextureEx(resume, (SCREEN_WIDTH-26)/2, 365, 0);
         graphics.renderTextureEx(button, 105, 316, 0);
-        renderSound(105,266);
-        renderSmallScore(score,263);
-        renderSmallScore(bestScore,313);
+        renderSound(105, 266);
+        renderSmallScore(score, 263);
+        renderSmallScore(bestScore, 313);
         graphics.presentScene();
-        if(SDL_PollEvent(&event)!=0){
+        if(SDL_PollEvent(&event) != 0){
             if(event.type == SDL_MOUSEBUTTONDOWN)
             {
                 SDL_GetMouseState( &mouseX, &mouseY );
@@ -243,17 +243,17 @@ void Game::prepare(){
     graphics.prepareScene();
     bgrr.scroll(2);
     bgrrN.scroll(2);
-    if(isDay) graphics.renderScrolling(bgrr,0);
-    else graphics.renderScrolling(bgrrN,0);
+    if(isDay) graphics.renderScrolling(bgrr, 0);
+    else graphics.renderScrolling(bgrrN, 0);
     land.scroll(2);
-    graphics.renderScrolling(land,500);
-    graphics.renderTextureEx(LeftButton,0,SCREEN_HEIGHT/2,0);
-    graphics.renderTextureEx(RightButton,SCREEN_WIDTH - 13, SCREEN_HEIGHT/2,0);
-    bird.render(bird,graphics);
-    graphics.renderTextureEx(message,(SCREEN_WIDTH-MESSAGE_WIDTH)/2,(SCREEN_HEIGHT-MESSAGE_HEIGHT-LAND_HEIGHT)/2,0);
-    renderSound(10,10);
-    graphics.renderTextureEx(LeftButton,31,317,0);
-    graphics.renderTextureEx(RightButton,90,317,0);
+    graphics.renderScrolling(land, 500);
+    graphics.renderTextureEx(LeftButton, 0, SCREEN_HEIGHT/2, 0);
+    graphics.renderTextureEx(RightButton, SCREEN_WIDTH - 13, SCREEN_HEIGHT/2, 0);
+    bird.render(bird, graphics);
+    graphics.renderTextureEx(message, (SCREEN_WIDTH-MESSAGE_WIDTH)/2, (SCREEN_HEIGHT-MESSAGE_HEIGHT-LAND_HEIGHT)/2, 0);
+    renderSound(10, 10);
+    graphics.renderTextureEx(LeftButton, 31, 317, 0);
+    graphics.renderTextureEx(RightButton, 90, 317, 0);
     graphics.presentScene();
     SDL_Delay(16);
     SDL_Event e;
@@ -293,9 +293,8 @@ void Game::playGame(){
             score++;
             if(isSound) graphics.playSound(sPoint);
          }
-         //graphics.prepareScene();
          frameStart = SDL_GetTicks();
-         while(SDL_PollEvent(&event)!=0){
+         while(SDL_PollEvent(&event) != 0){
             if (event.type == SDL_QUIT) {quit = true; die = 1;}
             const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
             if(currentKeyStates[SDL_SCANCODE_SPACE]){
@@ -305,8 +304,7 @@ void Game::playGame(){
             else bird.turnDown();
             if(event.type == SDL_MOUSEBUTTONDOWN )
             {
-                SDL_GetMouseState(&mouseX,&mouseY);
-                //if(mouseX >= 10 && mouseX <= 42 && mouseY >=10 && mouseY <= 34 ) updateSound();
+                SDL_GetMouseState(&mouseX, &mouseY);
                 if(mouseX >= 320 && mouseX <= 346 && mouseY >= 10 && mouseY <= 38)
                 {
                     pause_game();
@@ -321,9 +319,9 @@ void Game::playGame(){
          bird.move();
          bgrr.scroll(2);
          bgrrN.scroll(2);
-         if(isDay) graphics.renderScrolling(bgrr,0);
-         else graphics.renderScrolling(bgrrN,0);
-         for(int i = 0;i < pipe.size();i++)
+         if(isDay) graphics.renderScrolling(bgrr, 0);
+         else graphics.renderScrolling(bgrrN, 0);
+         for(int i = 0; i < pipe.size(); i++)
          {
              pipe[i].scroll(2);
              pipe[i].renderPipe( pipe[i].getX(), pipe[i].getY_Up(), graphics, 1);
@@ -332,13 +330,13 @@ void Game::playGame(){
          if(pipe[0].checkPipeOut())
          {
              pipe.erase(pipe.begin());
-             tPipe.setPosX(pipe[2].getX()+220);
-             tPipe.setPosY(rand()%141);
+             tPipe.setPosX(pipe[2].getX() + 220);
+             tPipe.setPosY(rand() % 141);
              pipe.push_back(tPipe);
          }
          renderLargeScore(score);
          land.scroll(2);
-         graphics.renderScrolling(land,500);
+         graphics.renderScrolling(land, 500);
          bird.render(bird,graphics);
          graphics.renderTextureEx(pause, 320, 10, 0);
          graphics.presentScene();
@@ -356,8 +354,8 @@ void Game::resetGame()
     pipe.clear();
     for(int i = 0;i <= 3;i ++)
     {
-        tPipe.setPosX(500 + 220*i);
-        tPipe.setPosY(rand()%141);
+        tPipe.setPosX(500 + 220 * i);
+        tPipe.setPosY(rand() % 141);
         pipe.push_back(tPipe);
     }
     score = 0;
@@ -365,16 +363,16 @@ void Game::resetGame()
 void Game::clearG()
 {
     bird.clearBird();
-    for(int i = 0;i < pipe.size(); i++)
+    for(int i = 0; i < pipe.size(); i++)
     {
         pipe[i].clearPipe();
     }
-    for(int i = 0;i < 9; i++)
+    for(int i = 0; i < 9; i++)
     {
         SDL_DestroyTexture(largeNum[i]);
         SDL_DestroyTexture(smallNum[i]);
     }
-    for(int i = 0;i < 3; i++)
+    for(int i = 0; i < 3; i++)
     {
         SDL_DestroyTexture(medal[i]);
     }
