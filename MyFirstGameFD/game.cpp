@@ -406,6 +406,7 @@ void Game::clearG()
     Mix_FreeChunk(sFlap);
     Mix_FreeChunk(sDead);
     Mix_FreeChunk(sPoint);
+    Mix_FreeMusic(sMusic);
     graphics.quit();
 }
 

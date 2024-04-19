@@ -94,5 +94,5 @@ void Graphics::playMusic(Mix_Music *gMusic){
         }
 }
 void Graphics::pauseMusic(){
-    Mix_HaltMusic();
+    Mix_PauseMusic() ;
 }
