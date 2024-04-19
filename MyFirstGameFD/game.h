@@ -55,7 +55,7 @@ public:
     void updateBestScore();
     void changeBackground();
     void renderLargeScore(int sc);
-    void renderSmallScore(int sc,int posY);
+    void renderSmallScore(int sc,int posX);
     void renderMedal();
     void prepare();
     void playGame();

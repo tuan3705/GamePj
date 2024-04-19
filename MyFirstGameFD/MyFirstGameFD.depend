@@ -3,7 +3,7 @@
 	<bits/stdc++.h>
 	"game.h"
 
-1713362497 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\game.cpp
+1713514248 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\game.cpp
 	"game.h"
 	<bits/stdc++.h>
 
@@ -30,7 +30,7 @@
 	"gameloop.h"
 	<bits/stdc++.h>
 
-1713362061 c:\users\admin\documents\github\gamepj\myfirstgamefd\bird.h
+1713513758 c:\users\admin\documents\github\gamepj\myfirstgamefd\bird.h
 	"graphics.h"
 	<bits/stdc++.h>
 
@@ -45,18 +45,18 @@
 
 1712216278 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\menu.cpp
 
-1713361921 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\pipe.cpp
+1713513993 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\pipe.cpp
 	"pipe.h"
 
 1712241910 c:\users\admin\documents\github\gamepj\myfirstgamefd\background.h
 
-1713361892 c:\users\admin\documents\github\gamepj\myfirstgamefd\pipe.h
+1713513758 c:\users\admin\documents\github\gamepj\myfirstgamefd\pipe.h
 	<bits/stdc++.h>
 	"graphics.h"
 
 1712845778 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\sound.cpp
 
-1713502891 c:\users\admin\documents\github\gamepj\myfirstgamefd\game.h
+1713514145 c:\users\admin\documents\github\gamepj\myfirstgamefd\game.h
 	<bits/stdc++.h>
 	"def.h"
 	"bird.h"

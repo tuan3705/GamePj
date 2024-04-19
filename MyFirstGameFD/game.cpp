@@ -92,22 +92,22 @@ void Game::renderLargeScore(int sc)
 {
     string s = to_string(sc);
     int width = 30;
-    int Pos = (SCREEN_WIDTH - width*s.size())/2;
-    for(int i = 0; i < s.size(); i++)
+    int PosX = (SCREEN_WIDTH - width*s.length())/2;
+    for(int i = 0; i < s.length(); i++)
     {
-        graphics.renderTextureEx(largeNum[s[i]-'0'], Pos, 10, 0);
-        Pos += 30;
+        graphics.renderTextureEx(largeNum[s[i]-'0'], PosX, 10, 0);
+        PosX += 30;
     }
 }
 void Game::renderSmallScore(int sc, int posY)
 {
     string s = to_string(sc);
     int width = 21;
-    int Pos = 271  - 21*s.size();
-    for(int i = 0; i < s.size(); i++)
+    int PosX = 271  - 21*s.length();
+    for(int i = 0; i < s.length(); i++)
     {
-        graphics.renderTextureEx(smallNum[s[i]-'0'], Pos, posY, 0);
-        Pos += 21;
+        graphics.renderTextureEx(smallNum[s[i]-'0'], PosX, posY, 0);
+        PosX += 21;
     }
 }
 void Game::renderMedal()
