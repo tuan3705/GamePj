@@ -280,6 +280,34 @@ void Game::prepare(){
         }
     }
 }
+void Game::updateG()
+{
+             graphics.prepareScene();
+         bird.move();
+         bgrr.scroll(2);
+         bgrrN.scroll(2);
+         if(isDay) graphics.renderScrolling(bgrr, 0);
+         else graphics.renderScrolling(bgrrN, 0);
+         for(int i = 0; i < pipe.size(); i++)
+         {
+             pipe[i].scroll(2);
+             pipe[i].renderPipe( pipe[i].getX(), pipe[i].getY_Up(), graphics, 1);
+             pipe[i].renderPipe( pipe[i].getX(), pipe[i].getY_Un(), graphics, 2);
+         }
+         if(pipe[0].checkPipeOut())
+         {
+             pipe.erase(pipe.begin());
+             tPipe.setPosX(pipe[2].getX() + 220);
+             tPipe.setPosY(rand() % 141);
+             pipe.push_back(tPipe);
+         }
+         renderLargeScore(score);
+         land.scroll(2);
+         graphics.renderScrolling(land, 500);
+         bird.render(bird,graphics);
+         graphics.renderTextureEx(pause, 320, 10, 0);
+         graphics.presentScene();
+}
 void Game::playGame(){
     const int TARGET_FPS = 60;
     Uint32 frameStart, frameTime;
@@ -318,31 +346,7 @@ void Game::playGame(){
                 pause_game();
             }
          }
-         graphics.prepareScene();
-         bird.move();
-         bgrr.scroll(2);
-         bgrrN.scroll(2);
-         if(isDay) graphics.renderScrolling(bgrr, 0);
-         else graphics.renderScrolling(bgrrN, 0);
-         for(int i = 0; i < pipe.size(); i++)
-         {
-             pipe[i].scroll(2);
-             pipe[i].renderPipe( pipe[i].getX(), pipe[i].getY_Up(), graphics, 1);
-             pipe[i].renderPipe( pipe[i].getX(), pipe[i].getY_Un(), graphics, 2);
-         }
-         if(pipe[0].checkPipeOut())
-         {
-             pipe.erase(pipe.begin());
-             tPipe.setPosX(pipe[2].getX() + 220);
-             tPipe.setPosY(rand() % 141);
-             pipe.push_back(tPipe);
-         }
-         renderLargeScore(score);
-         land.scroll(2);
-         graphics.renderScrolling(land, 500);
-         bird.render(bird,graphics);
-         graphics.renderTextureEx(pause, 320, 10, 0);
-         graphics.presentScene();
+         updateG();
          frameTime = SDL_GetTicks() - frameStart;
         if(frameTime < 1000 / TARGET_FPS){
             SDL_Delay((1000 / TARGET_FPS) - frameTime);

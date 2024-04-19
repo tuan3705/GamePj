@@ -61,6 +61,7 @@ public:
     void playGame();
     void animation_dead();
     void pause_game();
+    void updateG();
     void resetGame();
 
 };
