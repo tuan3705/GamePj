@@ -68,10 +68,8 @@ public:
     void render(const Bird& bird,  Graphics& graphics)
     {
         UpdateIndexAnimation();
-     if(GetIndexAnimation() < 17)
-         graphics.renderTextureEx(birdFlapUp[typeBird], bird.x, bird.y, angle);
-     else if(GetIndexAnimation() < 33)
-         graphics.renderTextureEx(birdFlapMid[typeBird], bird.x, bird.y, angle);
+     if(GetIndexAnimation() < 17)  graphics.renderTextureEx(birdFlapUp[typeBird], bird.x, bird.y, angle);
+     else if(GetIndexAnimation() < 33) graphics.renderTextureEx(birdFlapMid[typeBird], bird.x, bird.y, angle);
      else  graphics.renderTextureEx(birdFlapDown[typeBird], bird.x, bird.y, angle);
     }
     void reset()

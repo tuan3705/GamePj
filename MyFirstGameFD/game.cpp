@@ -49,6 +49,7 @@ void Game::initG()
     land.setTexture(graphics.loadTexture("Picture/land.png"));
     bgrr.setTexture(graphics.loadTexture("Picture/background-day.png"));
     bgrrN.setTexture(graphics.loadTexture("Picture/background-night.png"));
+    sClick = graphics.loadSound("Sound/mouse-click.mp3");
     sFlap = graphics.loadSound("sound/flap.mp3");
     sDead = graphics.loadSound("sound/dead.mp3");
     sPoint = graphics.loadSound("sound/point.wav");
@@ -191,6 +192,7 @@ void Game::animation_dead(){
                 SDL_GetMouseState(&mouseX,&mouseY);
                 if(mouseX >= 125 && mouseX <= 225 && mouseY >= 360 && mouseY <= 416)
                 {
+                    if(isSound) graphics.playSound(sClick);
                     resetGame();
                     Play = 0;
                     break;
@@ -228,9 +230,9 @@ void Game::pause_game(){
             if(event.type == SDL_MOUSEBUTTONDOWN)
             {
                 SDL_GetMouseState( &mouseX, &mouseY );
-                if(mouseX >= 105 && mouseX <= 105 + 32 && mouseY >= 266 && mouseY <= 266 + 24) updateSound();
-                if(mouseX >= 105 && mouseX <= 105 + 26 && mouseY >= 316 && mouseY <= 316 + 26) changeBackground();
-                if(mouseX >= 162 && mouseX <= 162 + 26 && mouseY >= 365 && mouseY <= 365 + 28) break;
+                if(mouseX >= 105 && mouseX <= 105 + 32 && mouseY >= 266 && mouseY <= 266 + 24) {updateSound(); if(isSound) graphics.playSound(sClick);}
+                if(mouseX >= 105 && mouseX <= 105 + 26 && mouseY >= 316 && mouseY <= 316 + 26) {changeBackground(); if(isSound) graphics.playSound(sClick);}
+                if(mouseX >= 162 && mouseX <= 162 + 26 && mouseY >= 365 && mouseY <= 365 + 28) {if(isSound) graphics.playSound(sClick); break;}
             }
             if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_p ) break;
             if(event.type == SDL_QUIT ) {quit = 1;die = 1; break;}
@@ -269,11 +271,11 @@ void Game::prepare(){
         if(e.type == SDL_MOUSEBUTTONDOWN )
         {
             SDL_GetMouseState(&mouseX, &mouseY);
-            if(mouseX >= 10 && mouseX <= 42 && mouseY >= 10 && mouseY <= 34 ) updateSound();
-            else if(mouseX >= 31 && mouseX <= 44 && mouseY >= 317 && mouseY <= 333 )bird.updateTypeBird(-1);
-            else if(mouseX >= 90 && mouseX <= 103 && mouseY >= 317 && mouseY <= 333 )bird.updateTypeBird(1);
-            else if(mouseX >= 0 && mouseX <= 13 && mouseY >= 312 && mouseY <= 328) changeBackground();
-            else if(mouseX >= 337 && mouseX <= 350 && mouseY >= 312 && mouseY <= 328) changeBackground();
+            if(mouseX >= 10 && mouseX <= 42 && mouseY >= 10 && mouseY <= 34 ) {updateSound(); if(isSound) graphics.playSound(sClick);}
+            else if(mouseX >= 31 && mouseX <= 44 && mouseY >= 317 && mouseY <= 333 ){bird.updateTypeBird(-1); if(isSound) graphics.playSound(sClick);}
+            else if(mouseX >= 90 && mouseX <= 103 && mouseY >= 317 && mouseY <= 333 ){bird.updateTypeBird(1); if(isSound) graphics.playSound(sClick);}
+            else if(mouseX >= 0 && mouseX <= 13 && mouseY >= 312 && mouseY <= 328) {changeBackground(); if(isSound) graphics.playSound(sClick);}
+            else if(mouseX >= 337 && mouseX <= 350 && mouseY >= 312 && mouseY <= 328) {changeBackground(); if(isSound) graphics.playSound(sClick);}
             else Play = true;
         }
     }
@@ -307,6 +309,7 @@ void Game::playGame(){
                 SDL_GetMouseState(&mouseX, &mouseY);
                 if(mouseX >= 320 && mouseX <= 346 && mouseY >= 10 && mouseY <= 38)
                 {
+                    if(isSound) graphics.playSound(sClick);
                     pause_game();
                 }
             }
@@ -387,6 +390,7 @@ void Game::clearG()
     SDL_DestroyTexture(TTgameOver);
     SDL_DestroyTexture(Sound);
     SDL_DestroyTexture(NotSound);
+    Mix_FreeChunk(sClick);
     Mix_FreeChunk(sFlap);
     Mix_FreeChunk(sDead);
     Mix_FreeChunk(sPoint);

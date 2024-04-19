@@ -38,6 +38,7 @@ private:
     SDL_Texture* TTgameOver;
     SDL_Texture* Sound;
     SDL_Texture* NotSound;
+    Mix_Chunk *sClick;
     Mix_Chunk *sFlap;
     Mix_Chunk *sDead;
     Mix_Chunk *sPoint;
