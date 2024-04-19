@@ -31,6 +31,9 @@ public:
     void renderScrolling(const ScrollingBackground& bgr, int h);
     Mix_Chunk* loadSound(const char* path);
     void playSound(Mix_Chunk* gChunk);
+    Mix_Music *loadMusic(const char* path);
+    void playMusic(Mix_Music *gMusic);
+    void pauseMusic();
     void quit();
 };
 

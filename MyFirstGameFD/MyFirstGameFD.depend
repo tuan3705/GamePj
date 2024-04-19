@@ -3,7 +3,7 @@
 	<bits/stdc++.h>
 	"game.h"
 
-1713514248 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\game.cpp
+1713536339 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\game.cpp
 	"game.h"
 	<bits/stdc++.h>
 
@@ -12,11 +12,11 @@
 	<SDL_image.h>
 	<SDL_mixer.h>
 
-1713365158 c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.h
+1713538638 c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.h
 	"def.h"
 	<bits/stdc++.h>
 
-1713361693 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.cpp
+1713538650 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\graphics.cpp
 	"graphics.h"
 
 1711256872 c:\users\admin\documents\github\gamepj\myfirstgamefd\doge.h
@@ -56,7 +56,7 @@
 
 1712845778 source:c:\users\admin\documents\github\gamepj\myfirstgamefd\sound.cpp
 
-1713536344 c:\users\admin\documents\github\gamepj\myfirstgamefd\game.h
+1713538586 c:\users\admin\documents\github\gamepj\myfirstgamefd\game.h
 	<bits/stdc++.h>
 	"def.h"
 	"bird.h"

@@ -38,6 +38,7 @@ private:
     SDL_Texture* TTgameOver;
     SDL_Texture* Sound;
     SDL_Texture* NotSound;
+    Mix_Music *sMusic;
     Mix_Chunk *sClick;
     Mix_Chunk *sFlap;
     Mix_Chunk *sDead;
@@ -62,6 +63,7 @@ public:
     void animation_dead();
     void pause_game();
     void updateG();
+    void updateMusic();
     void resetGame();
 
 };

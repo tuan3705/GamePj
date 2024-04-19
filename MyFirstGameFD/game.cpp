@@ -49,11 +49,14 @@ void Game::initG()
     land.setTexture(graphics.loadTexture("Picture/land.png"));
     bgrr.setTexture(graphics.loadTexture("Picture/background-day.png"));
     bgrrN.setTexture(graphics.loadTexture("Picture/background-night.png"));
+    sMusic = graphics.loadMusic("Sound/music.mp3");
+    graphics.playMusic(sMusic);
     sClick = graphics.loadSound("Sound/mouse-click.mp3");
     sFlap = graphics.loadSound("sound/flap.mp3");
     sDead = graphics.loadSound("sound/dead.mp3");
     sPoint = graphics.loadSound("sound/point.wav");
     bird.loadBird(graphics);
+
 }
 bool Game::isPlay()
 {
@@ -109,6 +112,11 @@ void Game::renderSmallScore(int sc, int posY)
         graphics.renderTextureEx(smallNum[s[i]-'0'], PosX, posY, 0);
         PosX += 21;
     }
+}
+void Game::updateMusic()
+{
+    if(isSound) {graphics.pauseMusic();}
+    else graphics.playMusic(sMusic);
 }
 void Game::renderMedal()
 {
@@ -230,7 +238,7 @@ void Game::pause_game(){
             if(event.type == SDL_MOUSEBUTTONDOWN)
             {
                 SDL_GetMouseState( &mouseX, &mouseY );
-                if(mouseX >= 105 && mouseX <= 105 + 32 && mouseY >= 266 && mouseY <= 266 + 24) {updateSound(); if(isSound) graphics.playSound(sClick);}
+                if(mouseX >= 105 && mouseX <= 105 + 32 && mouseY >= 266 && mouseY <= 266 + 24) {updateMusic();updateSound(); if(isSound) graphics.playSound(sClick);}
                 if(mouseX >= 105 && mouseX <= 105 + 26 && mouseY >= 316 && mouseY <= 316 + 26) {changeBackground(); if(isSound) graphics.playSound(sClick);}
                 if(mouseX >= 162 && mouseX <= 162 + 26 && mouseY >= 365 && mouseY <= 365 + 28) {if(isSound) graphics.playSound(sClick); break;}
             }
@@ -265,13 +273,13 @@ void Game::prepare(){
         if(e.type == SDL_QUIT) quit = true;
         if(e.type == SDL_KEYDOWN)
         {
-            if(e.key.keysym.sym == SDLK_m) updateSound();
+            if(e.key.keysym.sym == SDLK_m) {updateMusic();updateSound();}
             if(e.key.keysym.sym == SDLK_SPACE) Play = true;
         }
         if(e.type == SDL_MOUSEBUTTONDOWN )
         {
             SDL_GetMouseState(&mouseX, &mouseY);
-            if(mouseX >= 10 && mouseX <= 42 && mouseY >= 10 && mouseY <= 34 ) {updateSound(); if(isSound) graphics.playSound(sClick);}
+            if(mouseX >= 10 && mouseX <= 42 && mouseY >= 10 && mouseY <= 34 ) {updateMusic();updateSound(); if(isSound) graphics.playSound(sClick);}
             else if(mouseX >= 31 && mouseX <= 44 && mouseY >= 317 && mouseY <= 333 ){bird.updateTypeBird(-1); if(isSound) graphics.playSound(sClick);}
             else if(mouseX >= 90 && mouseX <= 103 && mouseY >= 317 && mouseY <= 333 ){bird.updateTypeBird(1); if(isSound) graphics.playSound(sClick);}
             else if(mouseX >= 0 && mouseX <= 13 && mouseY >= 312 && mouseY <= 328) {changeBackground(); if(isSound) graphics.playSound(sClick);}
