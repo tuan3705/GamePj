@@ -1,4 +1,4 @@
-1. Thông tin sinh viên
+1. Thông tin sinh viên </br>
  Họ và tên: Dương Anh Tuấn </br>
  Mã sinh viên: 23021704 </br>
 2. Chủ đề game: Flappy bird </br>
